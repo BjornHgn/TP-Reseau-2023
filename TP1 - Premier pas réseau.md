@@ -213,7 +213,10 @@ Addresses:  2606:4700:20::681a:ae9
           172.67.74.226
 ```
 
-Adresse IP du nom de domaine du serveur questionné
+```
+Serveur :   livebox.home
+Address:  2a01:cb19:941:be00:5efa:25ff:fe48:9120
+```
 
 ```
 PS C:\Users\fayer> nslookup 231.34.113.12
