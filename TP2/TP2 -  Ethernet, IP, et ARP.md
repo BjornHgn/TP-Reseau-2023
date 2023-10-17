@@ -111,17 +111,15 @@ Interface : 192.168.109.1 --- 0x12
   224.0.0.252           01-00-5e-00-00-fc     statique
   239.255.255.250       01-00-5e-7f-ff-fa     statique
   ```
-  
+
 🌞 **Wireshark it**
 
-- vous savez maintenant comment forcer un échange ARP : il sufit de vider la table ARP et tenter de contacter quelqu'un, l'échange ARP se fait automatiquement
-- mettez en évidence les deux trames ARP échangées lorsque vous essayez de contacter quelqu'un pour la "première" fois
-  - déterminez, pour les deux trames, les adresses source et destination
+La première adresse source est ```CompalIn_10:d5:74 (40:c2:ba:10:d5:74)```. L'adresse de destination est ```Broadcast (ff:ff:ff:ff:ff:ff)```.
+
+La deuxième adresse source est ```CompalIn_fe:ea:ee (08:8f:c3:fe:ea:ee)```. L'adresse de destination est ```CompalIn_10:d5:74 (40:c2:ba:10:d5:74)```.
   - déterminez à quoi correspond chacune de ces adresses
 
 🦈 **PCAP qui contient les DEUX trames ARP**
-
-> L'échange ARP est constitué de deux trames : un ARP broadcast et un ARP reply.
 
 # III. DHCP
 
