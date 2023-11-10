@@ -1,10 +1,10 @@
 # TP4 : DHCP
 
-# I. DHCP Client
+## I. DHCP Client
 
 🌞 **Déterminer**
 
-```
+```shell
 PS C:\Users\fayer> ipconfig /all
 Serveur DHCP . . . . . . . . . . . . . : 10.33.79.254
 Bail obtenu. . . . . . . . . . . . . . : vendredi 27 octobre 2023 10:42:51
@@ -27,21 +27,21 @@ C'est la trame `Offer` qui contient les informations
 
 🌞 **Preuve de mise en place**
 
-```
+```shell
 [bjorn@dhcp ~]$ ping 8.8.8.8
 PING 8.8.8.8 (8.8.8.8) 56(84) bytes of data.
 64 bytes from 8.8.8.8: icmp_seq=1 ttl=113 time=21.5 ms
 64 bytes from 8.8.8.8: icmp_seq=2 ttl=113 time=19.3 ms
 ```
 
-```
+```shell
 [bjorn@node2 ~]$ ping 8.8.8.8
 PING 8.8.8.8 (8.8.8.8) 56(84) bytes of data.
 64 bytes from 8.8.8.8: icmp_seq=1 ttl=113 time=18.7 ms
 64 bytes from 8.8.8.8: icmp_seq=2 ttl=113 time=25.4 ms
 ```
 
-```
+```shell
 [bjorn@node2 ~]$ traceroute 64.233.160.0
 traceroute to 64.233.160.0 (64.233.160.0), 30 hops max, 60 byte packets
 gateway (10.4.1.254)  1.120 ms  2.513 ms  2.467 ms
@@ -52,14 +52,14 @@ gateway (10.4.1.254)  1.120 ms  2.513 ms  2.467 ms
 
 🌞 **Rendu**
 
-```
+```shell
 [bjorn@dhcp ~]$sudo nano /etc/resolv.conf
 [bjorn@dhcp ~]$ping ynov.com
 [bjorn@dhcp ~]$sudo dnf -y install dhcp-server
 [bjorn@dhcp ~]$sudo nano /etc/dhcp/dhcpd.conf
 ```
 
-```
+```shell
 [bjorn@dhcp ~]$ systemctl status dhcpd
 ● dhcpd.service - DHCPv4 Server Daemon
      Loaded: loaded (/usr/lib/systemd/system/dhcpd.service; enabled; preset: disabled)
@@ -75,7 +75,7 @@ gateway (10.4.1.254)  1.120 ms  2.513 ms  2.467 ms
              └─1501 /usr/sbin/dhcpd -f -cf /etc/dhcp/dhcpd.conf -user dhcpd -group dhcpd --no-pid
 ```
 
-```
+```shell
 [bjorn@dhcp ~]$ sudo cat /etc/dhcp/dhcpd.conf
 [sudo] password for bjorn:
 # Configuration serveur DHCP
@@ -104,7 +104,7 @@ subnet 10.4.1.0 netmask 255.255.255.0 {
 
 🌞 **Prouvez que**
 
-```
+```shell
 [bjorn@node1 ~]$ ip a
 2: enp0s3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
     link/ether 08:00:27:6b:5d:e3 brd ff:ff:ff:ff:ff:ff
@@ -116,7 +116,7 @@ subnet 10.4.1.0 netmask 255.255.255.0 {
   - déterminer la date exacte d'expiration
   - déterminer l'adresse IP du serveur DHCP (depuis `node1.tp4.b1` : il a enregistré l'adresse IP du serveur DHCP)
 
-```
+```shell
 [bjorn@node1 ~]$ ping 10.4.1.254
 PING 10.4.1.254 (10.4.1.254) 56(84) bytes of data.
 64 bytes from 10.4.1.254: icmp_seq=1 ttl=64 time=2.65 ms
@@ -124,7 +124,7 @@ PING 10.4.1.254 (10.4.1.254) 56(84) bytes of data.
 64 bytes from 10.4.1.254: icmp_seq=3 ttl=64 time=2.32 ms
 ```
 
-```
+```shell
 [bjorn@node1 ~]$  ping 10.4.1.12
 PING 10.4.1.12 (10.4.1.12) 56(84) bytes of data.
 64 bytes from 10.4.1.12: icmp_seq=1 ttl=64 time=2.51 ms
@@ -136,7 +136,7 @@ PING 10.4.1.12 (10.4.1.12) 56(84) bytes of data.
 
 ```cat /var/lib/dhcpd/dhcpd.leases```
 
-```
+```shell
 lease 10.4.1.137 {
   starts 6 2023/11/04 23:59:36;
   ends 0 2023/11/05 00:09:36;
@@ -153,7 +153,7 @@ lease 10.4.1.137 {
 
 🌞 **Nouvelle conf !**
 
-```
+``` shell
 [bjorn@dhcp ~]$ sudo cat /etc/dhcp/dhcpd.conf
 # create new
 # specify domain name
