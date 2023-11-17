@@ -1,8 +1,8 @@
 # TP6 : Un LAN maîtrisé meo ?
 
-# II. Serveur DNS
+## II. Serveur DNS
 
-## 2. Setup
+### 2. Setup
 
 🌞 **Dans le rendu, je veux**
 
@@ -118,7 +118,7 @@ tcp        LISTEN      0           10                                           
 39  sudo firewall-cmd --reload
 ```
 
-## 3. Test
+### 3. Test
 
 🌞 **Sur la machine `john.tp6.b1`**
 
@@ -142,7 +142,6 @@ PING www.ynov.com (104.26.11.233) 56(84) bytes of data.
 
 - utilisez une commande pour résoudre le nom `john.tp6.b1` en utilisant `10.6.1.201` comme serveur DNS
 
-
 🦈 **Capture `tp6_dns.pcapng`**
 
 - une requête DNS vers le nom `john.tp6.b1` ainsi que la réponse
@@ -150,11 +149,7 @@ PING www.ynov.com (104.26.11.233) 56(84) bytes of data.
 - les requêtes DNS passent en clair, rien n'est chiffré : on voit tout !
 - capture à réaliser avec une commande `tcpdump` sur l'un des VMs
 
-# III. Serveur DHCP
-
-> *On prend les mêmes et on r'commence.*
-
-![Topo 3](./img/topo3.svg)
+## III. Serveur DHCP
 
 | Name            | LAN1 `10.6.1.0/24` |
 | --------------- | ------------------ |
@@ -200,7 +195,7 @@ PING www.ynov.com (104.26.11.233) 56(84) bytes of data.
 
 > *Hé. Tu le sens qu'on se rapproche vraiment d'une situation réelle là ?*
 
-# IV. Bonus : Serveur Web HTTPS
+## IV. Bonus : Serveur Web HTTPS
 
 Cette partie est un **bonus** : juste pour les téméraires donc.
 
