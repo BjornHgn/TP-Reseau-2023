@@ -62,7 +62,7 @@ listening on enp0s3, link-type EN10MB (Ethernet), snapshot length 262144 bytes
 [bjorn@localhost ~]$ sudo ip neigh flush all
 ```
 
-🦈 **Capture réseau `tp3_arp.pcapng`** qui contient un ARP request et un ARP reply
+[tp3_arp.pcap](tp3_arp.pcap)
 
 # II. Routage
 
@@ -89,7 +89,6 @@ PING 10.3.1.11 (10.3.1.11) 56(84) bytes of data.
 
 🌞**Analyse des échanges ARP**
 
-
 | ordre | type trame  | IP source | MAC source                | IP destination | MAC destination            |
 | ----- | ----------- | --------- | ------------------------- | -------------- | -------------------------- |
 | 1     | Requête ARP | x         | `Jhon` `08:00:27:a9:cc:35` | x              | Broadcast `FF:FF:FF:FF:FF` |
@@ -98,13 +97,11 @@ PING 10.3.1.11 (10.3.1.11) 56(84) bytes of data.
 | ?     | Ping        | 10.3.1.11 | `08:00:27:a9:cc:35`  | 10.3.2.12   |`marcel` `08:00:27:4a:21:7f`           |
 | ?     | Pong        | 10.3.2.12 | `08:00:27:4a:21:7f`  | 10.3.1.11   | `Jhon` `08:00:27:a9:cc:35`          |
 
-## 3. Accès internet
+### 3. Accès internet
 
 🌞**Donnez un accès internet à vos machines** - config routeur
 
-
 🌞**Donnez un accès internet à vos machines** - config clients
-
 
 🌞**Analyse de trames**
 

@@ -16,23 +16,6 @@ Twitch : `52.223.202.183`, port `443`. Port ouvert local : `58245`
 
 🌞 **Demandez l'avis à votre OS**
 
-- votre OS est responsable de l'ouverture des ports, et de placer un programme qui se "lie" à un port (on dit généralement qu'il se *bind* à un port)
-- l'OS garde une trace en permanence de quelle programme utilise quel port
-- utilisez la commande adaptée à votre OS pour repérer, dans la liste de toutes les connexions réseau établies, la connexion que vous voyez dans Wireshark, pour chacune des 5 applications
-- **lancez votre terminal en admin pour avoir toutes les infos**
-
-**Il faudra ajouter des options adaptées aux commandes pour y voir clair. Pour rappel, vous cherchez des connexions TCP ou UDP.**
-
-```
-# MacOS
-$ netstat
-
-# GNU/Linux
-$ ss
-
-# Windows
-$ netstat
-```
 
 🦈🦈🦈🦈🦈 **Bah ouais, 5 captures Wireshark à l'appui évidemment.** Ce sera `tp5_service_1.pcapng` jusqu'à `tp5_service_5.pcapng`.
 
@@ -57,8 +40,6 @@ TCP    10.5.1.1:55726         10.5.1.11:22           ESTABLISHED        102442
 [bjorn@node1 ~]$ ss -an
 tcp    ESTAB     0        52           10.5.1.11:22                10.5.1.1:55726
 ```
-
-- vous devez repérer clairement une ligne qui indique que c'est le programme `sshd` (le serveur SSH) qui est responsable de la connexion
 
 🦈 **[tp5_3_way.pcapng](./tp5_3_way.pcapng)
 
@@ -102,33 +83,23 @@ PING ynov.com (104.26.11.233) 56(84) bytes of data.
 
 🌞 **Démarrer le serveur web !**
 
-```nginx
+```bash
 [bjorn@web ~]$ systemctl status nginx
 ● nginx.service - The nginx HTTP and reverse proxy server
      Loaded: loaded (/usr/lib/systemd/system/nginx.service; disabled; preset: disabled)
      Active: active (running) since Fri 2023-11-10 16:38:50 CET; 48s ago
-    Process: 11546 ExecStartPre=/usr/bin/rm -f /run/nginx.pid (code=exited, status=0/SUCCESS)
-    Process: 11547 ExecStartPre=/usr/sbin/nginx -t (code=exited, status=0/SUCCESS)
-    Process: 11548 ExecStart=/usr/sbin/nginx (code=exited, status=0/SUCCESS)
-   Main PID: 11549 (nginx)
-      Tasks: 2 (limit: 4672)
-     Memory: 1.9M
-        CPU: 40ms
-     CGroup: /system.slice/nginx.service
-             ├─11549 "nginx: master process /usr/sbin/nginx"
-             └─11550 "nginx: worker process"
 ```
 
 🌞 **Ouvrir le port firewall**
 
-```shell
+```bash
 [bjorn@web ~]$ sudo sh -c firewall-cmd --permanent --zone=public --add-service=http
 [bjorn@web ~]$ sudo sh -c firewall-cmd --reload"
 ```
 
 🌞 **Visitez le serveur web !**
 
-```shell
+```bash
 [bjorn@node1 ~]$ sudo curl http://10.5.1.12
 [sudo] password for bjorn:
 <h1>SITE</h1>
